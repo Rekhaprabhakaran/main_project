@@ -15,6 +15,15 @@ if total%2==0:
 else:
         odd_even="odd" 
         print("odd")    
+def win():
+        if p_score>c_score:
+                
+                print("player won")
+        elif c_score>p_score:
+                print("computer won")
+        else:
+                print("Its a tie") 
+                             
 def player_bat(): 
         global p_score
         global c_score
@@ -29,34 +38,42 @@ def player_bat():
         print("player is out.player score:",p_score) 
         print("computer is batting and player is bowling")
         computer_score=random.randint(1,6)    
-        player_score=int(input("computer enter a number between 1 and 6:")) 
+        player_score=int(input("player enter a number between 1 and 6:")) 
         while player_score !=computer_score:
                         c_score+=computer_score
-                        computer_score=random.randint(1,6)
-                        player_score=int(input("computer enter a number between 1 and 6:"))
+                        if c_score>p_score:
+                                
+                                break
                         
-        print("computer is out.computer score:",c_score)  
+                        computer_score=random.randint(1,6)
+                        player_score=int(input("player enter a number between 1 and 6:"))
+                        
+        print("computer score:",c_score)  
+        win()
 def computer_bat():
         global p_score
         global c_score
 
         print("computer is batting and player is bowling")
         computer_score=random.randint(1,6)    
-        player_score=int(input("computer enter a number between 1 and 6:")) 
-        while player_score !=computer_score:
+        player_score=int(input("player enter a number between 1 and 6:")) 
+        while player_score !=computer_score :
                         c_score+=computer_score
                         computer_score=random.randint(1,6)
-                        player_score=int(input("computer enter a number between 1 and 6:"))
+                        player_score=int(input("player enter a number between 1 and 6:"))
                         
         print("computer is out.computer score:",c_score)
         print("player is batting ,computer is bowling")
         player_score=int(input("player enter a number between 1 and 6:"))
         computer_score=random.randint(1,6)
-        while player_score !=computer_score:
+        while player_score !=computer_score :
                         p_score+=player_score
+                        if p_score>c_score:
+                                break
                         player_score=int(input("player enter a number between 1 and 6:"))
                         computer_score=random.randint(1,6)
-        print("player is out.player score:",p_score)            
+        print("player score:",p_score)
+        win()            
 if player_selection==odd_even:
         p_bat_bowl_selection=input("player Choose to bat or bowl..:").lower()
         if p_bat_bowl_selection=="bat":
@@ -70,14 +87,8 @@ else:
                 computer_bat()
         else:
                 player_bat()
-                     
-if p_score>c_score:
-                
-                print("player won")
-elif c_score>p_score:
-                print("computer won")
-else:
-                print("Its a tie")                
+
+               
 
 
                         
